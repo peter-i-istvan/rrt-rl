@@ -1,0 +1,10 @@
+The file 'acrobot-{COMMIT_HASH}.png' contains my current best attempt at showing the advantage of RRT in sample gathering.
+It can be summarised as follows:
+- Training with RRT-based sample gathering manages to reach and consistently surpass the performance of the baseline model (by about 20.42% - meaining a cumulative reward of -62.83 [RRT] relative to -78.95 [baseline] as both models' best validation scores - even after only 1000 single batch updates).
+- It accomplishes this with 1/10th of the training data, due to the way the Q-space of the baseline model and the RRT data structure was used in the data gathering process.
+- The data gathered with the latter method also contains a higher proportion of terminal winning transitions (reward >= 0), almost 10 times as much (22 in 100_000 vs 20 in 10_000), which gives the smaller, but better sampled dataset an edge due to the otherwise sparse nature of the reward in acrobot. See 'samples.{baseline|rrt}.csv' and 'tree.csv' for further insight.
+- In both cases, the environment had a slightly modified reward, with a component rewarding the actual height of the double pendulum's end, with a magnitude of 0.1. This helped the convergence of the baseline while not influencing the optimal policy too much (TODO: WHY?) 
+- I included the models themselves: '{dqn|rrt}.model.pth'
+- If you want to see how do these models perform visually, run 'play.py'.
+- I included epsilon decay even though it does not have any effect on any model update step, due to the fact that experiences gathered with random action selection do not get added to the train buffer. 
+This was fully reproducible at commit COMMIT_HASH on my laptop (CPU)
