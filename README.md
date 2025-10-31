@@ -13,7 +13,7 @@ The RRT algorithm was initially developed for path-finding in robotics, but due 
 
 We apply the algorithm by interpreting environment states as nodes in a tree, with the distance metric between them being the *cosine similarity of the softmax-normalized Q vectors* corresponding to the state (an improvement over [1], which uses the euclidean distance of states). The Q-vector is taken from a reference DQN network that was trained on a limited set of random pre-collected samples.
 
-We demonstrate that even this 'weak' guidance being incorporated along the RRT algorithm gives us the ability to collect more diverse samples, and surpass the performance of the reference agent with a fraction of the training data when trained from sratch, showing that our method does not merely "distill" the base model, but builds a better and more sample-efficient set of experiences. 
+We demonstrate that even this 'weak' guidance being incorporated along the RRT algorithm gives us the ability to collect more diverse samples, and surpass the performance of the reference agent with a fraction of the training data when trained from scratch, showing that our method does not merely "distill" the base model, but builds a better and more sample-efficient set of experiences. 
 
 We also expand upon [1] by generalizing the scope from lane keeping to three different benchmark RL problems, as seen in the paper.
 
